@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
 {
-    public class ShellViewModel : ReactiveObject
+    public class MainViewModel : ReactiveObject
     {
         private string _applicationTitle;
         private string _withCanExecuteParameter;
 
-        public ShellViewModel()
+        public MainViewModel()
         {
             // Set properties
             ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Commands";

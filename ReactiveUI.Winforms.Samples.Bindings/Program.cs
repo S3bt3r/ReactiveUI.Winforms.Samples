@@ -1,8 +1,8 @@
-﻿using ReactiveUI.Winforms.Samples.Commands.Views;
+﻿using ReactiveUI.Winforms.Samples.Bindings.Views;
 using System;
 using System.Windows.Forms;
 
-namespace ReactiveUI.Winforms.Samples.Commands
+namespace ReactiveUI.Winforms.Samples.Bindings
 {
     static class Program
     {

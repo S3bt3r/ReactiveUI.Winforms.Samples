@@ -1,6 +1,6 @@
 ﻿namespace ReactiveUI.Winforms.Samples.Commands.Views
 {
-    partial class ShellView
+    partial class MainView
     {
         /// <summary>
         /// Erforderliche Designervariable.

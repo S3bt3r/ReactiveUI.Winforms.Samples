@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveUI.Winforms.Samples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveUI.Winforms.Samples.Commands", "ReactiveUI.Winforms.Samples.Commands\ReactiveUI.Winforms.Samples.Commands.csproj", "{B0F115E5-0898-4E65-A6CE-BE3739820D14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveUI.Winforms.Samples.Bindings", "ReactiveUI.Winforms.Samples.Bindings\ReactiveUI.Winforms.Samples.Bindings.csproj", "{16AEBB87-DDC5-444C-B22F-EF9E89835EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B0F115E5-0898-4E65-A6CE-BE3739820D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0F115E5-0898-4E65-A6CE-BE3739820D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0F115E5-0898-4E65-A6CE-BE3739820D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16AEBB87-DDC5-444C-B22F-EF9E89835EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AEBB87-DDC5-444C-B22F-EF9E89835EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AEBB87-DDC5-444C-B22F-EF9E89835EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AEBB87-DDC5-444C-B22F-EF9E89835EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

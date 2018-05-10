@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace ReactiveUI.Winforms.Samples.Commands.Views
 {
-    public partial class ShellView : Form, IViewFor<ShellViewModel>
+    public partial class MainView : Form, IViewFor<MainViewModel>
     {
-        public ShellView()
+        public MainView()
         {
             InitializeComponent();
 
@@ -21,15 +21,15 @@ namespace ReactiveUI.Winforms.Samples.Commands.Views
             // Bind command with can execute
             this.BindCommand(ViewModel, vm => vm.WithCanExecuteCommand, v => v.btWithCanExecute);
 
-            ViewModel = new ShellViewModel();
+            ViewModel = new MainViewModel();
         }
         
-        public ShellViewModel ViewModel { get; set; }
+        public MainViewModel ViewModel { get; set; }
 
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (ShellViewModel)value;
+            set => ViewModel = (MainViewModel)value;
         }
     }
 }

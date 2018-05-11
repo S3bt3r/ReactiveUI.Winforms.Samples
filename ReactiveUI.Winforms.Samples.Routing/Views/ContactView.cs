@@ -3,19 +3,19 @@ using System.Windows.Forms;
 
 namespace ReactiveUI.Winforms.Samples.Routing.Views
 {
-    public partial class ReactiveUiView : UserControl, IViewFor<ReactiveUiViewModel>
+    public partial class ContactView : UserControl, IViewFor<ContactViewModel>
     {
-        public ReactiveUiView()
+        public ContactView()
         {
             InitializeComponent();
         }
-        
-        public ReactiveUiViewModel ViewModel { get; set; }
+
+        public ContactViewModel ViewModel { get; set; }
 
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (ReactiveUiViewModel)value;
+            set => ViewModel = (ContactViewModel)value;
         }
     }
 }

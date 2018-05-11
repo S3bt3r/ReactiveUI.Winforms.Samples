@@ -46,7 +46,8 @@ namespace ReactiveUI.Winforms.Samples.Routing.Views
 
             // Bind commands
             this.BindCommand(ViewModel, vm => vm.ShowHomeCommand, v => v.btHome);
-            this.BindCommand(ViewModel, vm => vm.ShowReactiveUICommand, v => v.btReactiveUI);
+            this.BindCommand(ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout);
+            this.BindCommand(ViewModel, vm => vm.ShowContactCommand, v => v.btContact);
             this.BindCommand(ViewModel, vm => vm.GoBackCommand, v => v.btGoBack);
         }
         

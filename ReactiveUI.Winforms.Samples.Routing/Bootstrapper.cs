@@ -17,7 +17,8 @@ namespace ReactiveUI.Winforms.Samples.Routing
             // Register views
             Locator.CurrentMutable.Register(() => new ShellView(), typeof(IViewFor<ShellViewModel>));
             Locator.CurrentMutable.Register(() => new HomeView(), typeof(IViewFor<HomeViewModel>));
-            Locator.CurrentMutable.Register(() => new ReactiveUiView(), typeof(IViewFor<ReactiveUiViewModel>));
+            Locator.CurrentMutable.Register(() => new AboutView(), typeof(IViewFor<AboutViewModel>));
+            Locator.CurrentMutable.Register(() => new ContactView(), typeof(IViewFor<ContactViewModel>));
         }
         
         public void Run()

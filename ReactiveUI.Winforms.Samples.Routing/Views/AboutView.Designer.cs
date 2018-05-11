@@ -1,6 +1,6 @@
 ﻿namespace ReactiveUI.Winforms.Samples.Routing.Views
 {
-    partial class ReactiveUiView
+    partial class AboutView
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -37,17 +37,17 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 25);
+            this.label1.Size = new System.Drawing.Size(114, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "ReactiveUIView";
+            this.label1.Text = "AboutView";
             // 
-            // ReactiveUiView
+            // AboutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Name = "ReactiveUiView";
-            this.Size = new System.Drawing.Size(211, 150);
+            this.Name = "AboutView";
+            this.Size = new System.Drawing.Size(489, 327);
             this.ResumeLayout(false);
             this.PerformLayout();
 

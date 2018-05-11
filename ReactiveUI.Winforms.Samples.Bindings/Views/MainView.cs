@@ -1,4 +1,5 @@
 ﻿using ReactiveUI.Winforms.Samples.Bindings.ViewModels;
+using System;
 using System.Windows.Forms;
 
 namespace ReactiveUI.Winforms.Samples.Bindings.Views
@@ -9,11 +10,20 @@ namespace ReactiveUI.Winforms.Samples.Bindings.Views
         {
             InitializeComponent();
 
+            // One way bind from viewmodel to view
             this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text);
+
+            // Two way bind for input (textbox) and one way bind for output (label)
+            this.Bind(ViewModel, vm => vm.ValueOne, v => v.tbInputOne.Text);
+            this.OneWayBind(ViewModel, vm => vm.ValueOne, v => v.lOutputOne.Text);
+
+            // Two way bind for input (textbox) with convert and one way bind for output (label)
+            this.Bind(ViewModel, vm => vm.ValueTwo, v => v.dtpInputTwo.Value, t => DateTime.FromFileTime(t), dt => dt.ToFileTime());
+            this.OneWayBind(ViewModel, vm => vm.ValueTwo, v => v.lOutputTwo.Text);
 
             ViewModel = new MainViewModel();
         }
-
+           
         public MainViewModel ViewModel { get; set; }
 
         object IViewFor.ViewModel

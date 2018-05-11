@@ -14,7 +14,8 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
             ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Routing";
             // Create commands
             ShowHomeCommand = ReactiveCommand.Create(ShowHome);
-            ShowReactiveUICommand = ReactiveCommand.Create(ShowReactiveUI);
+            ShowAboutCommand = ReactiveCommand.Create(ShowAbout);
+            ShowContactCommand = ReactiveCommand.Create(ShowContact);
             GoBackCommand = ReactiveCommand.Create(GoBack);
             // Navigate to HomeViewModel and reset NavigationStack (shows HomeView at application start)
             Router
@@ -32,7 +33,8 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
         }
 
         public ReactiveCommand ShowHomeCommand { get; }
-        public ReactiveCommand ShowReactiveUICommand { get; }
+        public ReactiveCommand ShowAboutCommand { get; }
+        public ReactiveCommand ShowContactCommand { get; }
         public ReactiveCommand GoBackCommand { get; }
 
         private void ShowHome()
@@ -44,22 +46,35 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
                 .Subscribe();
         }
 
-        private void ShowReactiveUI()
+        private void ShowAbout()
         {
-            // Navigate to ReactiveUiViewModel 
+            // Navigate to AboutViewModel 
             Router
                 .Navigate
-                .Execute(new ReactiveUiViewModel())
+                .Execute(new AboutViewModel())
+                .Subscribe();
+        }
+
+        private void ShowContact()
+        {
+            // Navigate to ContactViewModel 
+            Router
+                .Navigate
+                .Execute(new ContactViewModel())
                 .Subscribe();
         }
 
         private void GoBack()
         {
             // Navigate back in NavigationStack 
-            Router
-                .NavigateBack
-                .Execute()
-                .Subscribe();
+            // Note: You have to check the count to prevent an ArgumentOutOfRangeException or navigate to empty
+            if (Router.NavigationStack.Count > 0)
+            {
+                Router
+                    .NavigateBack
+                    .Execute()
+                    .Subscribe();
+            }
         }
     }
 }

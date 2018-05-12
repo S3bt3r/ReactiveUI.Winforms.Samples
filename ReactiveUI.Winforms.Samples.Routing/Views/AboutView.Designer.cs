@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lViewTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lViewTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "AboutView";
+            this.lViewTitle.AutoSize = true;
+            this.lViewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lViewTitle.Location = new System.Drawing.Point(3, 13);
+            this.lViewTitle.Name = "lViewTitle";
+            this.lViewTitle.Size = new System.Drawing.Size(120, 25);
+            this.lViewTitle.TabIndex = 2;
+            this.lViewTitle.Text = "View Name";
             // 
             // AboutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lViewTitle);
             this.Name = "AboutView";
             this.Size = new System.Drawing.Size(489, 327);
             this.ResumeLayout(false);
@@ -55,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lViewTitle;
     }
 }

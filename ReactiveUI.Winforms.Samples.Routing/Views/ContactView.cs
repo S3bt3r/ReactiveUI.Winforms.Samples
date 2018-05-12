@@ -8,6 +8,11 @@ namespace ReactiveUI.Winforms.Samples.Routing.Views
         public ContactView()
         {
             InitializeComponent();
+
+            this.WhenActivated(d =>
+            {
+                d(this.OneWayBind(ViewModel, vm => vm.ViewTitle, v => v.lViewTitle.Text));
+            });
         }
 
         public ContactViewModel ViewModel { get; set; }

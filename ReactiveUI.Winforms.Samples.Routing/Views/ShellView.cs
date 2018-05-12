@@ -38,17 +38,20 @@ namespace ReactiveUI.Winforms.Samples.Routing.Views
         {
             InitializeComponent();
 
-            // Bind router
-            this.OneWayBind(ViewModel, vm => vm.Router, v => v.routedControlHost.Router);
+            this.WhenActivated(b =>
+            {
+                // Bind router
+                b(this.OneWayBind(ViewModel, vm => vm.Router, v => v.routedControlHost.Router));
 
-            // Bind properties
-            this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text);
+                // Bind properties
+                b(this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text));
 
-            // Bind commands
-            this.BindCommand(ViewModel, vm => vm.ShowHomeCommand, v => v.btHome);
-            this.BindCommand(ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout);
-            this.BindCommand(ViewModel, vm => vm.ShowContactCommand, v => v.btContact);
-            this.BindCommand(ViewModel, vm => vm.GoBackCommand, v => v.btGoBack);
+                // Bind commands
+                b(this.BindCommand(ViewModel, vm => vm.ShowHomeCommand, v => v.btHome));
+                b(this.BindCommand(ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout));
+                b(this.BindCommand(ViewModel, vm => vm.ShowContactCommand, v => v.btContact));
+                b(this.BindCommand(ViewModel, vm => vm.GoBackCommand, v => v.btGoBack));
+            });
         }
         
         public ShellViewModel ViewModel { get; set; }

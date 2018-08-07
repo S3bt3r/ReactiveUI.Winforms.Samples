@@ -16,7 +16,7 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
             ShowHomeCommand = ReactiveCommand.Create(ShowHome);
             ShowAboutCommand = ReactiveCommand.Create(ShowAbout);
             ShowContactCommand = ReactiveCommand.Create(ShowContact);
-            GoBackCommand = ReactiveCommand.Create(GoBack);
+            GoBackCommand = ReactiveCommand.Create(GoBack, Router.NavigateBack.CanExecute);
             // Navigate to HomeViewModel and reset NavigationStack (shows HomeView at application start)
             Router
                 .NavigateAndReset

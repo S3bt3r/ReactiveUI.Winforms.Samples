@@ -33,9 +33,9 @@ namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
             set => this.RaiseAndSetIfChanged(ref _withCanExecuteParameter, value);
         }
 
-        public ReactiveCommand ParameterlessCommand { get; }
-        public ReactiveCommand WithParameterCommand { get; }
-        public ReactiveCommand WithCanExecuteCommand { get; }
+        public ReactiveCommand<Unit, Unit> ParameterlessCommand { get; }
+        public ReactiveCommand<string, Unit> WithParameterCommand { get; }
+        public ReactiveCommand<Unit, Unit> WithCanExecuteCommand { get; }
 
         private void Parameterless()
         {

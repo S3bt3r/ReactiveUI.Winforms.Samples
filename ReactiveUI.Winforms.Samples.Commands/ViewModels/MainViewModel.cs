@@ -1,4 +1,5 @@
-﻿using System.Reactive.Linq;
+﻿using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows;
 
 namespace ReactiveUI.Winforms.Samples.Commands.ViewModels

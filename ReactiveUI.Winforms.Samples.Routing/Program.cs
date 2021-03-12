@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Routing
+﻿namespace ReactiveUI.Winforms.Samples.Routing
 {
-    static class Program
+	using System;
+	using System.Windows.Forms;
+
+	public static class Program
     {
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

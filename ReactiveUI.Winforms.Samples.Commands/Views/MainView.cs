@@ -1,38 +1,40 @@
-﻿using ReactiveUI.Winforms.Samples.Commands.ViewModels;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Commands.Views
+﻿namespace ReactiveUI.Winforms.Samples.Commands.Views
 {
-    public partial class MainView : Form, IViewFor<MainViewModel>
+
+	using System;
+	using ViewModels;
+	using System.Windows.Forms;
+
+	public partial class MainView : Form, IViewFor<MainViewModel>
     {
         public MainView()
         {
-            InitializeComponent();
+	        this.InitializeComponent();
 
             this.WhenActivated(d =>
             {
                 // Bind properties
-                d(this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text));
+                d(this.OneWayBind( this.ViewModel, vm => vm.ApplicationTitle, v => v.Text));
                 // Bind property for command with can execute
-                d(this.Bind(ViewModel, vm => vm.WithCanExecuteParameter, v => v.tbWithCanExecuteParameter.Text));
+                d(this.Bind( this.ViewModel, vm => vm.WithCanExecuteParameter, v => v.tbWithCanExecuteParameter.Text));
 
                 // Bind parameterless command
-                d(this.BindCommand(ViewModel, vm => vm.ParameterlessCommand, v => v.btParameterless));
+                d(this.BindCommand( this.ViewModel, vm => vm.ParameterlessCommand, v => v.btParameterless));
                 // Bind command with parameter
-                d(this.BindCommand(ViewModel, vm => vm.WithParameterCommand, v => v.btWithParameter, this.WhenAnyValue(v => v.tbParameter.Text)));
+                d(this.BindCommand( this.ViewModel, vm => vm.WithParameterCommand, v => v.btWithParameter, this.WhenAnyValue(v => v.tbParameter.Text)));
                 // Bind command with can execute
-                d(this.BindCommand(ViewModel, vm => vm.WithCanExecuteCommand, v => v.btWithCanExecute));
+                d(this.BindCommand( this.ViewModel, vm => vm.WithCanExecuteCommand, v => v.btWithCanExecute));
             });
 
-            ViewModel = new MainViewModel();
+            this.ViewModel = new MainViewModel();
         }
         
         public MainViewModel ViewModel { get; set; }
 
-        object IViewFor.ViewModel
+        Object IViewFor.ViewModel
         {
-            get => ViewModel;
-            set => ViewModel = (MainViewModel)value;
+            get => this.ViewModel;
+            set => this.ViewModel = (MainViewModel)value;
         }
     }
 }

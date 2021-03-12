@@ -1,24 +1,25 @@
-﻿using System;
-
-namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
+﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
 {
-    public class ShellViewModel : ReactiveObject, IScreen
+	using System;
+	using System.Reactive;
+
+	public class ShellViewModel : ReactiveObject, IScreen
     {
-        private string _applicationTitle;
+        private String _applicationTitle;
 
         public ShellViewModel()
         {
             // Create router for IScreen
-            Router = new RoutingState();
+            this.Router = new RoutingState();
             // Set properties
-            ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Routing";
+            this.ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Routing";
             // Create commands
-            ShowHomeCommand = ReactiveCommand.Create(ShowHome);
-            ShowAboutCommand = ReactiveCommand.Create(ShowAbout);
-            ShowContactCommand = ReactiveCommand.Create(ShowContact);
-            GoBackCommand = ReactiveCommand.Create(GoBack, Router.NavigateBack.CanExecute);
+            this.ShowHomeCommand = ReactiveCommand.Create( this.ShowHome);
+            this.ShowAboutCommand = ReactiveCommand.Create( this.ShowAbout);
+            this.ShowContactCommand = ReactiveCommand.Create( this.ShowContact);
+            this.GoBackCommand = ReactiveCommand.Create( this.GoBack, this.Router.NavigateBack.CanExecute);
             // Navigate to HomeViewModel and reset NavigationStack (shows HomeView at application start)
-            Router
+            var _ = this.Router
                 .NavigateAndReset
                 .Execute(new HomeViewModel())
                 .Subscribe();
@@ -26,21 +27,21 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
 
         public RoutingState Router { get; }
 
-        public string ApplicationTitle
+        public String ApplicationTitle
         {
-            get => _applicationTitle;
-            set => this.RaiseAndSetIfChanged(ref _applicationTitle, value);
+            get => this._applicationTitle;
+            set => this.RaiseAndSetIfChanged(ref this._applicationTitle, value);
         }
 
-        public ReactiveCommand ShowHomeCommand { get; }
-        public ReactiveCommand ShowAboutCommand { get; }
-        public ReactiveCommand ShowContactCommand { get; }
-        public ReactiveCommand GoBackCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowHomeCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowAboutCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowContactCommand { get; }
+        public ReactiveCommand<Unit, Unit> GoBackCommand { get; }
 
         private void ShowHome()
         {
             // Navigate to HomeViewModel 
-            Router
+            var _ = this.Router
                 .Navigate
                 .Execute(new HomeViewModel())
                 .Subscribe();
@@ -49,31 +50,31 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
         private void ShowAbout()
         {
             // Navigate to AboutViewModel 
-            Router
-                .Navigate
-                .Execute(new AboutViewModel())
-                .Subscribe();
+            var _ = this.Router
+                        .Navigate
+                        .Execute(new AboutViewModel())
+                        .Subscribe();
         }
 
         private void ShowContact()
         {
             // Navigate to ContactViewModel 
-            Router
-                .Navigate
-                .Execute(new ContactViewModel())
-                .Subscribe();
+            var _ =   this.Router
+                          .Navigate
+                          .Execute(new ContactViewModel())
+                          .Subscribe();
         }
 
         private void GoBack()
         {
             // Navigate back in NavigationStack 
             // Note: You have to check the count to prevent an ArgumentOutOfRangeException or navigate to empty
-            if (Router.NavigationStack.Count > 0)
+            if ( this.Router.NavigationStack.Count > 0)
             {
-                Router
-                    .NavigateBack
-                    .Execute()
-                    .Subscribe();
+	            var _ =         this.Router
+	                                .NavigateBack
+	                                .Execute()
+	                                .Subscribe();
             }
         }
     }

@@ -1,37 +1,37 @@
-﻿using System;
-
-namespace ReactiveUI.Winforms.Samples.Bindings.ViewModels
+﻿namespace ReactiveUI.Winforms.Samples.Bindings.ViewModels
 {
-    public class MainViewModel : ReactiveObject
+	using System;
+
+	public class MainViewModel : ReactiveObject
     {
-        private string _applicationTitle;
-        private string _valueOne;
-        private long _valueTwo;
+        private String _applicationTitle;
+        private String _valueOne;
+        private Int64 _valueTwo;
 
         public MainViewModel()
         {
             // Set properties
-            ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Bindings";
-            ValueOne = "Type somthing";
-            ValueTwo = DateTime.Now.Date.ToFileTime();
+            this.ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Bindings";
+            this.ValueOne = "Type somthing";
+            this.ValueTwo = DateTime.Now.Date.ToFileTime();
         }
 
-        public string ApplicationTitle
+        public String ApplicationTitle
         {
-            get => _applicationTitle;
-            set => this.RaiseAndSetIfChanged(ref _applicationTitle, value);
+            get => this._applicationTitle;
+            set => this.RaiseAndSetIfChanged(ref this._applicationTitle, value);
         }
 
-        public string ValueOne
+        public String ValueOne
         {
-            get => _valueOne;
-            set => this.RaiseAndSetIfChanged(ref _valueOne, value);
+            get => this._valueOne;
+            set => this.RaiseAndSetIfChanged(ref this._valueOne, value);
         }
 
-        public long ValueTwo
+        public Int64 ValueTwo
         {
-            get => _valueTwo;
-            set => this.RaiseAndSetIfChanged(ref _valueTwo, value);
+            get => this._valueTwo;
+            set => this.RaiseAndSetIfChanged(ref this._valueTwo, value);
         }
     }
 }

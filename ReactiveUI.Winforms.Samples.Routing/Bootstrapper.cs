@@ -1,15 +1,15 @@
-﻿using ReactiveUI.Winforms.Samples.Routing.ViewModels;
-using ReactiveUI.Winforms.Samples.Routing.Views;
-using Splat;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Routing
+﻿namespace ReactiveUI.Winforms.Samples.Routing
 {
-    public class Bootstrapper
+	using ViewModels;
+	using Views;
+	using Splat;
+	using System.Windows.Forms;
+
+	public class Bootstrapper
     {
         public Bootstrapper()
         {
-            ConfigureServices();
+	        this.ConfigureServices();
         }
 
         private void ConfigureServices()

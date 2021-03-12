@@ -1,21 +1,21 @@
 ﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
 {
-    public class AboutViewModel : ReactiveObject, IRoutableViewModel
+
+	using System;
+
+	public class AboutViewModel : ReactiveObject, IRoutableViewModel
     {
-        private string _viewTitle;
+        private String _viewTitle;
 
-        public AboutViewModel()
-        {
-            ViewTitle = "About View";
-        }
+        public AboutViewModel() => this.ViewTitle = "About View";
 
-        public string ViewTitle
+        public String ViewTitle
         {
-            get => _viewTitle;
-            set => this.RaiseAndSetIfChanged(ref _viewTitle, value);
+            get => this._viewTitle;
+            set => this.RaiseAndSetIfChanged(ref this._viewTitle, value);
         }
 
         public IScreen HostScreen { get; protected set; }
-        public string UrlPathSegment { get; protected set; }        
+        public String UrlPathSegment { get; protected set; }        
     }
 }

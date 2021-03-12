@@ -1,26 +1,25 @@
-﻿using ReactiveUI.Winforms.Samples.Routing.ViewModels;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Routing.Views
+﻿namespace ReactiveUI.Winforms.Samples.Routing.Views
 {
-    public partial class ContactView : UserControl, IViewFor<ContactViewModel>
+	using ViewModels;
+	using System.Windows.Forms;
+
+	using System;
+
+	public partial class ContactView : UserControl, IViewFor<ContactViewModel>
     {
         public ContactView()
         {
-            InitializeComponent();
+	        this.InitializeComponent();
 
-            this.WhenActivated(d =>
-            {
-                d(this.OneWayBind(ViewModel, vm => vm.ViewTitle, v => v.lViewTitle.Text));
-            });
+	        var _ = this.WhenActivated(d => d?.Invoke(this.OneWayBind( this.ViewModel, vm => vm.ViewTitle, v => v.lViewTitle.Text)) );
         }
 
         public ContactViewModel ViewModel { get; set; }
 
-        object IViewFor.ViewModel
+        Object IViewFor.ViewModel
         {
-            get => ViewModel;
-            set => ViewModel = (ContactViewModel)value;
+            get => this.ViewModel;
+            set => this.ViewModel = (ContactViewModel)value;
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿using ReactiveUI.Winforms.Samples.Routing.ViewModels;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Routing.Views
+﻿namespace ReactiveUI.Winforms.Samples.Routing.Views
 {
-    public partial class ShellView : Form, IViewFor<ShellViewModel>
+	using ViewModels;
+	using System.Windows.Forms;
+
+	using System;
+
+	public partial class ShellView : Form, IViewFor<ShellViewModel>
     {
         /*
          * To see the RoutedControlHost in the Designer you have to create it manually in the ShellView.Designer.cs
@@ -36,30 +38,30 @@ namespace ReactiveUI.Winforms.Samples.Routing.Views
 
         public ShellView()
         {
-            InitializeComponent();
+	        this.InitializeComponent();
 
             this.WhenActivated(b =>
             {
                 // Bind router
-                b(this.OneWayBind(ViewModel, vm => vm.Router, v => v.routedControlHost.Router));
+                b(this.OneWayBind( this.ViewModel, vm => vm.Router, v => v.routedControlHost.Router));
 
                 // Bind properties
-                b(this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text));
+                b(this.OneWayBind( this.ViewModel, vm => vm.ApplicationTitle, v => v.Text));
 
                 // Bind commands
-                b(this.BindCommand(ViewModel, vm => vm.ShowHomeCommand, v => v.btHome));
-                b(this.BindCommand(ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout));
-                b(this.BindCommand(ViewModel, vm => vm.ShowContactCommand, v => v.btContact));
-                b(this.BindCommand(ViewModel, vm => vm.GoBackCommand, v => v.btGoBack));
+                b(this.BindCommand( this.ViewModel, vm => vm.ShowHomeCommand, v => v.btHome));
+                b(this.BindCommand( this.ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout));
+                b(this.BindCommand( this.ViewModel, vm => vm.ShowContactCommand, v => v.btContact));
+                b(this.BindCommand( this.ViewModel, vm => vm.GoBackCommand, v => v.btGoBack));
             });
         }
         
         public ShellViewModel ViewModel { get; set; }
 
-        object IViewFor.ViewModel
+        Object IViewFor.ViewModel
         {
-            get => ViewModel;
-            set => ViewModel = (ShellViewModel)value;
+            get => this.ViewModel;
+            set => this.ViewModel = (ShellViewModel)value;
         }
     }
 }

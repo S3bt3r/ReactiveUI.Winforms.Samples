@@ -1,13 +1,13 @@
-﻿using ReactiveUI.Winforms.Samples.Commands.Views;
-using System;
-using System.Windows.Forms;
-
-namespace ReactiveUI.Winforms.Samples.Commands
+﻿namespace ReactiveUI.Winforms.Samples.Commands
 {
-    static class Program
+	using Views;
+	using System;
+	using System.Windows.Forms;
+
+	public static class Program
     {
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

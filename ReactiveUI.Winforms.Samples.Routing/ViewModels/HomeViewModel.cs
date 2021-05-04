@@ -1,21 +1,23 @@
-﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
-{
-    public class HomeViewModel : ReactiveObject, IRoutableViewModel
-    {
-        private string _viewTitle;
+﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels {
 
-        public HomeViewModel()
-        {
-            ViewTitle = "Home View";
-        }
+	using System;
 
-        public string ViewTitle
-        {
-            get => _viewTitle;
-            set => this.RaiseAndSetIfChanged(ref _viewTitle, value);
-        }
+	public class HomeViewModel : ReactiveObject, IRoutableViewModel {
 
-        public IScreen HostScreen { get; protected set; }
-        public string UrlPathSegment { get; protected set; }        
-    }
+		private String _viewTitle;
+
+		public HomeViewModel() => this.ViewTitle = "Home View";
+
+		public String ViewTitle {
+			get => this._viewTitle;
+
+			set => this.RaiseAndSetIfChanged( ref this._viewTitle, value );
+		}
+
+		public IScreen HostScreen { get; protected set; }
+
+		public String UrlPathSegment { get; protected set; }
+
+	}
+
 }

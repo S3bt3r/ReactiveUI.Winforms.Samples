@@ -1,21 +1,23 @@
-﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
-{
-    public class ContactViewModel : ReactiveObject, IRoutableViewModel
-    {
-        private string _viewTitle;
+﻿namespace ReactiveUI.Winforms.Samples.Routing.ViewModels {
 
-        public ContactViewModel()
-        {
-            ViewTitle = "Contact View";
-        }
+	using System;
 
-        public string ViewTitle
-        {
-            get => _viewTitle;
-            set => this.RaiseAndSetIfChanged(ref _viewTitle, value);
-        }
+	public class ContactViewModel : ReactiveObject, IRoutableViewModel {
 
-        public IScreen HostScreen { get; protected set; }
-        public string UrlPathSegment { get; protected set; }        
-    }
+		private String _viewTitle;
+
+		public ContactViewModel() => this.ViewTitle = "Contact View";
+
+		public String ViewTitle {
+			get => this._viewTitle;
+
+			set => this.RaiseAndSetIfChanged( ref this._viewTitle, value );
+		}
+
+		public IScreen HostScreen { get; protected set; }
+
+		public String UrlPathSegment { get; protected set; }
+
+	}
+
 }

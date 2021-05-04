@@ -1,55 +1,55 @@
-﻿using System.Reactive.Linq;
-using System.Windows;
+﻿namespace ReactiveUI.Winforms.Samples.Commands.ViewModels {
 
-namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
-{
-    public class MainViewModel : ReactiveObject
-    {
-        private string _applicationTitle;
-        private string _withCanExecuteParameter;
+	using System;
+	using System.Reactive;
+	using System.Reactive.Linq;
+	using System.Windows;
 
-        public MainViewModel()
-        {
-            // Set properties
-            ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Commands";
-            // Create parameterless command
-            ParameterlessCommand = ReactiveCommand.Create(Parameterless);
-            // Create command with parameter
-            WithParameterCommand = ReactiveCommand.Create<string>(WithParameter);
-            // Create command with can execute
-            WithCanExecuteCommand = ReactiveCommand.Create(WithCanExecute, 
-                this.WhenAnyValue(vm => vm.WithCanExecuteParameter).Select(s => string.IsNullOrEmpty(s) == false));
-        }
+	public class MainViewModel : ReactiveObject {
 
-        public string ApplicationTitle
-        {
-            get => _applicationTitle;
-            set => this.RaiseAndSetIfChanged(ref _applicationTitle, value);
-        }
+		private String _applicationTitle;
 
-        public string WithCanExecuteParameter
-        {
-            get => _withCanExecuteParameter;
-            set => this.RaiseAndSetIfChanged(ref _withCanExecuteParameter, value);
-        }
+		private String _withCanExecuteParameter;
 
-        public ReactiveCommand ParameterlessCommand { get; }
-        public ReactiveCommand WithParameterCommand { get; }
-        public ReactiveCommand WithCanExecuteCommand { get; }
+		public MainViewModel() {
+			// Set properties
+			this.ApplicationTitle = "ReactiveUI Winforms Samples by Asesjix - Commands";
 
-        private void Parameterless()
-        {
-            MessageBox.Show("You pressed the button!", ApplicationTitle, MessageBoxButton.OK);
-        }
+			// Create parameterless command
+			this.ParameterlessCommand = ReactiveCommand.Create( this.Parameterless );
 
-        private void WithParameter(string message)
-        {
-            MessageBox.Show(message, ApplicationTitle, MessageBoxButton.OK);
-        }
+			// Create command with parameter
+			this.WithParameterCommand = ReactiveCommand.Create<String>( this.WithParameter );
 
-        private void WithCanExecute()
-        {
-            MessageBox.Show(WithCanExecuteParameter, ApplicationTitle, MessageBoxButton.OK);
-        }
-    }
+			// Create command with can execute
+			this.WithCanExecuteCommand = ReactiveCommand.Create( this.WithCanExecute,
+				this.WhenAnyValue( vm => vm.WithCanExecuteParameter )?.Select( s => String.IsNullOrEmpty( s ) == false ) );
+		}
+
+		public String ApplicationTitle {
+			get => this._applicationTitle;
+
+			set => this.RaiseAndSetIfChanged( ref this._applicationTitle, value );
+		}
+
+		public String WithCanExecuteParameter {
+			get => this._withCanExecuteParameter;
+
+			set => this.RaiseAndSetIfChanged( ref this._withCanExecuteParameter, value );
+		}
+
+		public ReactiveCommand<Unit, Unit> ParameterlessCommand { get; }
+
+		public ReactiveCommand<String, Unit> WithParameterCommand { get; }
+
+		public ReactiveCommand<Unit, Unit> WithCanExecuteCommand { get; }
+
+		private void Parameterless() => MessageBox.Show( "You pressed the button!", this.ApplicationTitle, MessageBoxButton.OK );
+
+		private void WithParameter( String message ) => MessageBox.Show( message, this.ApplicationTitle, MessageBoxButton.OK );
+
+		private void WithCanExecute() => MessageBox.Show( this.WithCanExecuteParameter, this.ApplicationTitle, MessageBoxButton.OK );
+
+	}
+
 }

@@ -1,26 +1,25 @@
-﻿using ReactiveUI.Winforms.Samples.Routing.ViewModels;
-using System.Windows.Forms;
+﻿namespace ReactiveUI.Winforms.Samples.Routing.Views {
 
-namespace ReactiveUI.Winforms.Samples.Routing.Views
-{
-    public partial class HomeView : UserControl, IViewFor<HomeViewModel>
-    {
-        public HomeView()
-        {
-            InitializeComponent();
+	using System;
+	using System.Windows.Forms;
+	using ViewModels;
 
-            this.WhenActivated(d =>
-            {
-                d(this.OneWayBind(ViewModel, vm => vm.ViewTitle, v => v.lViewTitle.Text));
-            });
-        }
+	public partial class HomeView : UserControl, IViewFor<HomeViewModel> {
 
-        public HomeViewModel ViewModel { get; set; }
+		public HomeView() {
+			this.InitializeComponent();
 
-        object IViewFor.ViewModel
-        {
-            get => ViewModel;
-            set => ViewModel = (HomeViewModel)value;
-        }       
-    }
+			var _ = this.WhenActivated( d => d?.Invoke( this.OneWayBind( this.ViewModel, vm => vm.ViewTitle, v => v.lViewTitle.Text ) ) );
+		}
+
+		public HomeViewModel ViewModel { get; set; }
+
+		Object IViewFor.ViewModel {
+			get => this.ViewModel;
+
+			set => this.ViewModel = ( HomeViewModel ) value;
+		}
+
+	}
+
 }

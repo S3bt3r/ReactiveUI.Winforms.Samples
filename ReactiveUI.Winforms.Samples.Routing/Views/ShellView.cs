@@ -1,20 +1,21 @@
-﻿using ReactiveUI.Winforms.Samples.Routing.ViewModels;
-using System.Windows.Forms;
+﻿namespace ReactiveUI.Winforms.Samples.Routing.Views {
 
-namespace ReactiveUI.Winforms.Samples.Routing.Views
-{
-    public partial class ShellView : Form, IViewFor<ShellViewModel>
-    {
-        /*
+	using System;
+	using System.Windows.Forms;
+	using ViewModels;
+
+	public partial class ShellView : Form, IViewFor<ShellViewModel> {
+
+		/*
          * To see the RoutedControlHost in the Designer you have to create it manually in the ShellView.Designer.cs
-         * 
+         *
          * private void InitializeComponent()
          * {
          *      this.routedControlHost = new ReactiveUI.Winforms.RoutedControlHost();
          *      ...
-         *      // 
+         *      //
          *      // routedControlHost
-         *      // 
+         *      //
          *      this.routedControlHost.DefaultContent = null;
          *      this.routedControlHost.Location = new System.Drawing.Point(3, 55);
          *      this.routedControlHost.Name = "routedControlHost";
@@ -23,43 +24,51 @@ namespace ReactiveUI.Winforms.Samples.Routing.Views
          *      this.routedControlHost.TabIndex = 4;
          *      this.routedControlHost.ViewLocator = null;
          *      ...
-         *      // 
+         *      //
          *      // ShellView
          *      //
          *      ...
          *      this.Controls.Add(this.routedControlHost);
          * }
-         * 
+         *
          * private RoutedControlHost routedControlHost;
-         * 
+         *
          */
 
-        public ShellView()
-        {
-            InitializeComponent();
+		public ShellView() {
+			this.InitializeComponent();
 
-            this.WhenActivated(b =>
-            {
-                // Bind router
-                b(this.OneWayBind(ViewModel, vm => vm.Router, v => v.routedControlHost.Router));
+			var _ = this.WhenActivated( action => {
+				if ( action is null ) {
+					return;
+				}
 
-                // Bind properties
-                b(this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text));
+				if ( this.ViewModel is null ) {
+					return;
+				}
 
-                // Bind commands
-                b(this.BindCommand(ViewModel, vm => vm.ShowHomeCommand, v => v.btHome));
-                b(this.BindCommand(ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout));
-                b(this.BindCommand(ViewModel, vm => vm.ShowContactCommand, v => v.btContact));
-                b(this.BindCommand(ViewModel, vm => vm.GoBackCommand, v => v.btGoBack));
-            });
-        }
-        
-        public ShellViewModel ViewModel { get; set; }
+				// Bind router
+				action( this.OneWayBind( this.ViewModel, vm => vm.Router, v => v.routedControlHost.Router ) );
 
-        object IViewFor.ViewModel
-        {
-            get => ViewModel;
-            set => ViewModel = (ShellViewModel)value;
-        }
-    }
+				// Bind properties
+				action( this.OneWayBind( this.ViewModel, vm => vm.ApplicationTitle, v => v.Text ) );
+
+				// Bind commands
+				action( this.BindCommand( this.ViewModel, vm => vm.ShowHomeCommand, v => v.btHome ) );
+				action( this.BindCommand( this.ViewModel, vm => vm.ShowAboutCommand, v => v.btAbout ) );
+				action( this.BindCommand( this.ViewModel, vm => vm.ShowContactCommand, v => v.btContact ) );
+				action( this.BindCommand( this.ViewModel, vm => vm.GoBackCommand, v => v.btGoBack ) );
+			} );
+		}
+
+		public ShellViewModel ViewModel { get; set; }
+
+		Object IViewFor.ViewModel {
+			get => this.ViewModel;
+
+			set => this.ViewModel = ( ShellViewModel ) value;
+		}
+
+	}
+
 }

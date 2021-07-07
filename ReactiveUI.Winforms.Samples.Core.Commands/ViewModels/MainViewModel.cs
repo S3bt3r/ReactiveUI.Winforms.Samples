@@ -2,7 +2,7 @@
 using System.Reactive.Linq;
 using System.Windows;
 
-namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
+namespace ReactiveUI.Winforms.Samples.Core.Commands.ViewModels
 {
     public class MainViewModel : ReactiveObject
     {
@@ -18,7 +18,7 @@ namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
             // Create command with parameter
             WithParameterCommand = ReactiveCommand.Create<string>(WithParameter);
             // Create command with can execute
-            WithCanExecuteCommand = ReactiveCommand.Create(WithCanExecute, 
+            WithCanExecuteCommand = ReactiveCommand.Create(WithCanExecute,
                 this.WhenAnyValue(vm => vm.WithCanExecuteParameter).Select(s => string.IsNullOrEmpty(s) == false));
         }
 
@@ -35,7 +35,9 @@ namespace ReactiveUI.Winforms.Samples.Commands.ViewModels
         }
 
         public ReactiveCommand<Unit, Unit> ParameterlessCommand { get; }
+
         public ReactiveCommand<string, Unit> WithParameterCommand { get; }
+
         public ReactiveCommand<Unit, Unit> WithCanExecuteCommand { get; }
 
         private void Parameterless()

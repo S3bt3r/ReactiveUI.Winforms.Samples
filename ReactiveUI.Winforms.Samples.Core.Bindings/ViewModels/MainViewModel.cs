@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ReactiveUI.Winforms.Samples.Bindings.ViewModels
+namespace ReactiveUI.Winforms.Samples.Core.Bindings.ViewModels
 {
     public class MainViewModel : ReactiveObject
     {

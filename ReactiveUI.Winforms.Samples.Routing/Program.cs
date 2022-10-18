@@ -9,6 +9,7 @@ namespace ReactiveUI.Winforms.Samples.Routing
         static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Create and run Bootstrapper

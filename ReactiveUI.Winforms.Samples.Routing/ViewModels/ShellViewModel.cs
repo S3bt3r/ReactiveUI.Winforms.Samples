@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive;
 
 namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
 {
@@ -32,10 +33,10 @@ namespace ReactiveUI.Winforms.Samples.Routing.ViewModels
             set => this.RaiseAndSetIfChanged(ref _applicationTitle, value);
         }
 
-        public ReactiveCommand ShowHomeCommand { get; }
-        public ReactiveCommand ShowAboutCommand { get; }
-        public ReactiveCommand ShowContactCommand { get; }
-        public ReactiveCommand GoBackCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowHomeCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowAboutCommand { get; }
+        public ReactiveCommand<Unit, Unit> ShowContactCommand { get; }
+        public ReactiveCommand<Unit, Unit> GoBackCommand { get; }
 
         private void ShowHome()
         {

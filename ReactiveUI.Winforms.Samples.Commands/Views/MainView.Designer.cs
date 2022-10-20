@@ -34,6 +34,7 @@
             this.tbWithCanExecuteParameter = new System.Windows.Forms.TextBox();
             this.btWithCanExecute = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.busyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btParameterless
@@ -87,18 +88,28 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Required";
             // 
-            // ShellView
+            // busyLabel
+            // 
+            this.busyLabel.AutoSize = true;
+            this.busyLabel.Location = new System.Drawing.Point(238, 43);
+            this.busyLabel.Name = "busyLabel";
+            this.busyLabel.Size = new System.Drawing.Size(39, 13);
+            this.busyLabel.TabIndex = 6;
+            this.busyLabel.Text = "Busy...";
+            // 
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.busyLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbWithCanExecuteParameter);
             this.Controls.Add(this.btWithCanExecute);
             this.Controls.Add(this.tbParameter);
             this.Controls.Add(this.btWithParameter);
             this.Controls.Add(this.btParameterless);
-            this.Name = "ShellView";
+            this.Name = "MainView";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -113,6 +124,7 @@
         private System.Windows.Forms.TextBox tbWithCanExecuteParameter;
         private System.Windows.Forms.Button btWithCanExecute;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label busyLabel;
     }
 }
 

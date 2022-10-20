@@ -11,6 +11,7 @@ namespace ReactiveUI.Winforms.Samples.Commands.Views
 
             this.WhenActivated(d =>
             {
+                d(this.OneWayBind(ViewModel, vm => vm.IsBusy, v => v.busyLabel.Visible));
                 // Bind properties
                 d(this.OneWayBind(ViewModel, vm => vm.ApplicationTitle, v => v.Text));
                 // Bind property for command with can execute
